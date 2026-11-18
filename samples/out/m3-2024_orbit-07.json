@@ -1,0 +1,331 @@
+{
+  "tool": "tesla-wrap-forge",
+  "version": "1.1.0",
+  "generatedAt": "2026-11-13T08:57:11.039Z",
+  "status": "pass",
+  "mode": "single",
+  "template": {
+    "id": "model3-2024-base",
+    "name": "Model 3 焕新版",
+    "variant": "标准续航 / 长续航",
+    "year": "2024+",
+    "width": 1024,
+    "height": 1024,
+    "sourceUrl": "https://github.com/teslamotors/custom-wraps/blob/master/model3-2024-base/template.png"
+  },
+  "input": {
+    "name": "orbit-07.svg",
+    "width": 1600,
+    "height": 1600,
+    "format": "svg"
+  },
+  "output": {
+    "fileName": "m3-2024_orbit-07.png",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 95073,
+    "maxBytes": 1000000,
+    "hasAlpha": true,
+    "palette": false,
+    "colours": null,
+    "scale": 1
+  },
+  "settings": {
+    "fit": "cover",
+    "zoom": 1,
+    "offsetX": 0,
+    "offsetY": 0,
+    "rotate": 0,
+    "flipX": false,
+    "flipY": false,
+    "background": "auto",
+    "quality": 92,
+    "dither": 0.8,
+    "maxBytes": 1000000,
+    "autoDownscale": true,
+    "name": "m3-2024_orbit-07"
+  },
+  "views": null,
+  "checks": [
+    {
+      "id": "dimensions",
+      "label": "尺寸 512–1024 px",
+      "status": "pass",
+      "detail": "1024 × 1024"
+    },
+    {
+      "id": "alpha",
+      "label": "包含透明通道",
+      "status": "pass",
+      "detail": "RGBA / 模板外透明"
+    },
+    {
+      "id": "bytes",
+      "label": "文件 ≤ 1 MB",
+      "status": "pass",
+      "detail": "95,073 B"
+    },
+    {
+      "id": "coverage",
+      "label": "模板区域覆盖",
+      "status": "pass",
+      "detail": "100.00%"
+    },
+    {
+      "id": "panels",
+      "label": "单板块最低覆盖",
+      "status": "pass",
+      "detail": "100.0%"
+    }
+  ],
+  "coverage": {
+    "ratio": 1,
+    "opaqueRatio": 0.9644,
+    "holes": 0,
+    "maskPixels": 465871,
+    "minPanelFill": 1
+  },
+  "panels": [
+    {
+      "id": "P01",
+      "area": 55885,
+      "fill": 1,
+      "bbox": {
+        "x": 238,
+        "y": 21,
+        "w": 554,
+        "h": 139
+      },
+      "centroid": {
+        "x": 511.5,
+        "y": 82
+      }
+    },
+    {
+      "id": "P02",
+      "area": 19927,
+      "fill": 1,
+      "bbox": {
+        "x": 38,
+        "y": 35,
+        "w": 212,
+        "h": 269
+      },
+      "centroid": {
+        "x": 158.7,
+        "y": 196.5
+      }
+    },
+    {
+      "id": "P03",
+      "area": 19925,
+      "fill": 1,
+      "bbox": {
+        "x": 780,
+        "y": 33,
+        "w": 212,
+        "h": 269
+      },
+      "centroid": {
+        "x": 871.2,
+        "y": 195.2
+      }
+    },
+    {
+      "id": "P04",
+      "area": 52208,
+      "fill": 1,
+      "bbox": {
+        "x": 365,
+        "y": 158,
+        "w": 297,
+        "h": 251
+      },
+      "centroid": {
+        "x": 513,
+        "y": 282.6
+      }
+    },
+    {
+      "id": "P05",
+      "area": 33336,
+      "fill": 1,
+      "bbox": {
+        "x": 89,
+        "y": 315,
+        "w": 147,
+        "h": 247
+      },
+      "centroid": {
+        "x": 162.4,
+        "y": 435.2
+      }
+    },
+    {
+      "id": "P06",
+      "area": 2528,
+      "fill": 1,
+      "bbox": {
+        "x": 307,
+        "y": 419,
+        "w": 75,
+        "h": 43
+      },
+      "centroid": {
+        "x": 347.7,
+        "y": 440.5
+      }
+    },
+    {
+      "id": "P07",
+      "area": 2532,
+      "fill": 1,
+      "bbox": {
+        "x": 644,
+        "y": 419,
+        "w": 75,
+        "h": 43
+      },
+      "centroid": {
+        "x": 677,
+        "y": 440.4
+      }
+    },
+    {
+      "id": "P08",
+      "area": 33346,
+      "fill": 1,
+      "bbox": {
+        "x": 794,
+        "y": 315,
+        "w": 146,
+        "h": 247
+      },
+      "centroid": {
+        "x": 865.8,
+        "y": 435.1
+      }
+    },
+    {
+      "id": "P09",
+      "area": 10369,
+      "fill": 1,
+      "bbox": {
+        "x": 256,
+        "y": 302,
+        "w": 27,
+        "h": 548
+      },
+      "centroid": {
+        "x": 268.8,
+        "y": 584
+      }
+    },
+    {
+      "id": "P10",
+      "area": 10299,
+      "fill": 1,
+      "bbox": {
+        "x": 748,
+        "y": 302,
+        "w": 28,
+        "h": 548
+      },
+      "centroid": {
+        "x": 761.8,
+        "y": 584.8
+      }
+    },
+    {
+      "id": "P11",
+      "area": 27729,
+      "fill": 1,
+      "bbox": {
+        "x": 87,
+        "y": 550,
+        "w": 163,
+        "h": 234
+      },
+      "centroid": {
+        "x": 170.5,
+        "y": 651.5
+      }
+    },
+    {
+      "id": "P12",
+      "area": 27716,
+      "fill": 1,
+      "bbox": {
+        "x": 779,
+        "y": 550,
+        "w": 164,
+        "h": 234
+      },
+      "centroid": {
+        "x": 857.7,
+        "y": 651.5
+      }
+    },
+    {
+      "id": "P13",
+      "area": 42091,
+      "fill": 1,
+      "bbox": {
+        "x": 763,
+        "y": 314,
+        "w": 257,
+        "h": 648
+      },
+      "centroid": {
+        "x": 914.2,
+        "y": 690.7
+      }
+    },
+    {
+      "id": "P14",
+      "area": 33353,
+      "fill": 1,
+      "bbox": {
+        "x": 361,
+        "y": 601,
+        "w": 304,
+        "h": 180
+      },
+      "centroid": {
+        "x": 513,
+        "y": 708.7
+      }
+    },
+    {
+      "id": "P15",
+      "area": 83072,
+      "fill": 1,
+      "bbox": {
+        "x": 9,
+        "y": 314,
+        "w": 764,
+        "h": 700
+      },
+      "centroid": {
+        "x": 310.1,
+        "y": 805.2
+      }
+    },
+    {
+      "id": "P16",
+      "area": 11555,
+      "fill": 1,
+      "bbox": {
+        "x": 391,
+        "y": 785,
+        "w": 243,
+        "h": 53
+      },
+      "centroid": {
+        "x": 512.1,
+        "y": 810.3
+      }
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,391 @@
+{
+  "tool": "tesla-wrap-forge",
+  "version": "1.1.0",
+  "generatedAt": "2026-11-13T08:57:16.780Z",
+  "status": "pass",
+  "mode": "single",
+  "template": {
+    "id": "modely-2025-premium",
+    "name": "Model Y 焕新版",
+    "variant": "长续航 / Premium",
+    "year": "2025+",
+    "width": 1024,
+    "height": 1024,
+    "sourceUrl": "https://github.com/teslamotors/custom-wraps/blob/master/modely-2025-premium/template.png"
+  },
+  "input": {
+    "name": "signal-flora.svg",
+    "width": 1600,
+    "height": 1600,
+    "format": "svg"
+  },
+  "output": {
+    "fileName": "my-2025_signal-flora.png",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 80392,
+    "maxBytes": 1000000,
+    "hasAlpha": true,
+    "palette": false,
+    "colours": null,
+    "scale": 1
+  },
+  "settings": {
+    "fit": "cover",
+    "zoom": 1,
+    "offsetX": 0,
+    "offsetY": 0,
+    "rotate": 0,
+    "flipX": false,
+    "flipY": false,
+    "background": "auto",
+    "quality": 92,
+    "dither": 0.8,
+    "maxBytes": 1000000,
+    "autoDownscale": true,
+    "name": "my-2025_signal-flora"
+  },
+  "views": null,
+  "checks": [
+    {
+      "id": "dimensions",
+      "label": "尺寸 512–1024 px",
+      "status": "pass",
+      "detail": "1024 × 1024"
+    },
+    {
+      "id": "alpha",
+      "label": "包含透明通道",
+      "status": "pass",
+      "detail": "RGBA / 模板外透明"
+    },
+    {
+      "id": "bytes",
+      "label": "文件 ≤ 1 MB",
+      "status": "pass",
+      "detail": "80,392 B"
+    },
+    {
+      "id": "coverage",
+      "label": "模板区域覆盖",
+      "status": "pass",
+      "detail": "99.99%"
+    },
+    {
+      "id": "panels",
+      "label": "单板块最低覆盖",
+      "status": "pass",
+      "detail": "99.9%"
+    }
+  ],
+  "coverage": {
+    "ratio": 0.9999,
+    "opaqueRatio": 0.9636,
+    "holes": 32,
+    "maskPixels": 374684,
+    "minPanelFill": 0.9987
+  },
+  "panels": [
+    {
+      "id": "P01",
+      "area": 39066,
+      "fill": 1,
+      "bbox": {
+        "x": 242,
+        "y": 6,
+        "w": 538,
+        "h": 114
+      },
+      "centroid": {
+        "x": 511.2,
+        "y": 63.2
+      }
+    },
+    {
+      "id": "P02",
+      "area": 18120,
+      "fill": 1,
+      "bbox": {
+        "x": 108,
+        "y": 112,
+        "w": 226,
+        "h": 257
+      },
+      "centroid": {
+        "x": 255.3,
+        "y": 259.4
+      }
+    },
+    {
+      "id": "P03",
+      "area": 50790,
+      "fill": 1,
+      "bbox": {
+        "x": 373,
+        "y": 108,
+        "w": 275,
+        "h": 233
+      },
+      "centroid": {
+        "x": 510.8,
+        "y": 222
+      }
+    },
+    {
+      "id": "P04",
+      "area": 18118,
+      "fill": 1,
+      "bbox": {
+        "x": 691,
+        "y": 112,
+        "w": 224,
+        "h": 258
+      },
+      "centroid": {
+        "x": 767.5,
+        "y": 260.4
+      }
+    },
+    {
+      "id": "P05",
+      "area": 2589,
+      "fill": 1,
+      "bbox": {
+        "x": 269,
+        "y": 365,
+        "w": 76,
+        "h": 45
+      },
+      "centroid": {
+        "x": 308.4,
+        "y": 386.9
+      }
+    },
+    {
+      "id": "P06",
+      "area": 2570,
+      "fill": 0.9992,
+      "bbox": {
+        "x": 677,
+        "y": 365,
+        "w": 75,
+        "h": 44
+      },
+      "centroid": {
+        "x": 711.3,
+        "y": 386.2
+      }
+    },
+    {
+      "id": "P07",
+      "area": 35509,
+      "fill": 1,
+      "bbox": {
+        "x": 80,
+        "y": 345,
+        "w": 182,
+        "h": 253
+      },
+      "centroid": {
+        "x": 171.4,
+        "y": 463.4
+      }
+    },
+    {
+      "id": "P08",
+      "area": 35533,
+      "fill": 0.9997,
+      "bbox": {
+        "x": 759,
+        "y": 347,
+        "w": 181,
+        "h": 252
+      },
+      "centroid": {
+        "x": 848.4,
+        "y": 464.9
+      }
+    },
+    {
+      "id": "P09",
+      "area": 9820,
+      "fill": 1,
+      "bbox": {
+        "x": 339,
+        "y": 344,
+        "w": 52,
+        "h": 470
+      },
+      "centroid": {
+        "x": 369.5,
+        "y": 575.6
+      }
+    },
+    {
+      "id": "P10",
+      "area": 9824,
+      "fill": 0.9987,
+      "bbox": {
+        "x": 629,
+        "y": 345,
+        "w": 53,
+        "h": 470
+      },
+      "centroid": {
+        "x": 650.4,
+        "y": 576.5
+      }
+    },
+    {
+      "id": "P11",
+      "area": 29624,
+      "fill": 1,
+      "bbox": {
+        "x": 66,
+        "y": 567,
+        "w": 172,
+        "h": 228
+      },
+      "centroid": {
+        "x": 159,
+        "y": 670.5
+      }
+    },
+    {
+      "id": "P12",
+      "area": 29605,
+      "fill": 0.9998,
+      "bbox": {
+        "x": 781,
+        "y": 570,
+        "w": 172,
+        "h": 228
+      },
+      "centroid": {
+        "x": 859,
+        "y": 673.8
+      }
+    },
+    {
+      "id": "P13",
+      "area": 16868,
+      "fill": 1,
+      "bbox": {
+        "x": 121,
+        "y": 777,
+        "w": 146,
+        "h": 175
+      },
+      "centroid": {
+        "x": 190,
+        "y": 868.1
+      }
+    },
+    {
+      "id": "P14",
+      "area": 3739,
+      "fill": 1,
+      "bbox": {
+        "x": 299,
+        "y": 812,
+        "w": 60,
+        "h": 152
+      },
+      "centroid": {
+        "x": 329.1,
+        "y": 888
+      }
+    },
+    {
+      "id": "P15",
+      "area": 16131,
+      "fill": 1,
+      "bbox": {
+        "x": 354,
+        "y": 871,
+        "w": 312,
+        "h": 61
+      },
+      "centroid": {
+        "x": 509.6,
+        "y": 901.1
+      }
+    },
+    {
+      "id": "P16",
+      "area": 3750,
+      "fill": 1,
+      "bbox": {
+        "x": 664,
+        "y": 813,
+        "w": 58,
+        "h": 153
+      },
+      "centroid": {
+        "x": 692,
+        "y": 889.5
+      }
+    },
+    {
+      "id": "P17",
+      "area": 16898,
+      "fill": 0.9999,
+      "bbox": {
+        "x": 754,
+        "y": 780,
+        "w": 147,
+        "h": 176
+      },
+      "centroid": {
+        "x": 831.2,
+        "y": 871.8
+      }
+    },
+    {
+      "id": "P18",
+      "area": 9120,
+      "fill": 1,
+      "bbox": {
+        "x": 53,
+        "y": 883,
+        "w": 124,
+        "h": 134
+      },
+      "centroid": {
+        "x": 110.2,
+        "y": 956.3
+      }
+    },
+    {
+      "id": "P19",
+      "area": 17889,
+      "fill": 1,
+      "bbox": {
+        "x": 393,
+        "y": 937,
+        "w": 240,
+        "h": 80
+      },
+      "centroid": {
+        "x": 512.8,
+        "y": 976.7
+      }
+    },
+    {
+      "id": "P20",
+      "area": 9121,
+      "fill": 1,
+      "bbox": {
+        "x": 851,
+        "y": 885,
+        "w": 120,
+        "h": 134
+      },
+      "centroid": {
+        "x": 914,
+        "y": 958.6
+      }
+    }
+  ],
+  "warnings": []
+}

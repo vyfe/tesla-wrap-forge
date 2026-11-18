@@ -1,0 +1,17 @@
+services:
+  wrapforge:
+    build:
+      context: .
+      args:
+        VITE_BASE: /wrap/
+    image: tesla-wrap-forge:local
+    container_name: tesla-wrap-forge
+    restart: unless-stopped
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8000
+      STATIC_DIR: /app/dist
+    ports:
+      - "127.0.0.1:9913:8000"
+    security_opt:
+      - no-new-privileges:true

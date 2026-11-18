@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1600" viewBox="0 0 1600 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.55" stop-color="#0b2340"/>
+      <stop offset="1" stop-color="#123a6b"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.36" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="#ffe39a"/>
+      <stop offset="0.42" stop-color="#ffc247"/>
+      <stop offset="0.8" stop-color="#ff5a1f"/>
+      <stop offset="1" stop-color="#d92d12"/>
+    </radialGradient>
+    <linearGradient id="ribbon" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#2e5bff"/>
+      <stop offset="0.55" stop-color="#2e5bff"/>
+      <stop offset="1" stop-color="#7aa0ff"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#d9f3e6" stroke-width="1" opacity="0.16"/>
+    </pattern>
+    <clipPath id="orb"><circle cx="1110" cy="490" r="390"/></clipPath>
+    <clipPath id="frame"><rect x="0" y="0" width="1600" height="1600"/></clipPath>
+    <mask id="scan">
+      <rect width="1600" height="1600" fill="#fff"/>
+      <g fill="#000">
+        <rect x="690" y="70" width="820" height="34"/>
+        <rect x="690" y="142" width="820" height="18"/>
+        <rect x="690" y="760" width="820" height="22"/>
+        <rect x="690" y="826" width="820" height="42"/>
+        <rect x="690" y="910" width="820" height="16"/>
+      </g>
+    </mask>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1600" height="1600" fill="url(#bg)"/>
+    <rect width="1600" height="1600" fill="url(#grid)"/>
+
+    <!-- orbital rings -->
+    <g fill="none" stroke="#d9f3e6">
+      <ellipse cx="640" cy="640" rx="760" ry="360" stroke-width="2" opacity="0.34" transform="rotate(-33 640 640)"/>
+      <ellipse cx="640" cy="640" rx="660" ry="300" stroke-width="1.5" opacity="0.26" transform="rotate(-33 640 640)"/>
+      <ellipse cx="640" cy="640" rx="560" ry="240" stroke-width="1" opacity="0.18" transform="rotate(-33 640 640)"/>
+      <circle cx="1110" cy="490" r="446" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="1110" cy="490" r="500" stroke-width="1" opacity="0.22"/>
+    </g>
+
+    <!-- striped sun -->
+    <g clip-path="url(#orb)" mask="url(#scan)">
+      <rect x="700" y="70" width="820" height="860" fill="url(#sun)"/>
+      <circle cx="1010" cy="360" r="130" fill="#f4eee2" opacity="0.32"/>
+      <circle cx="1010" cy="360" r="86" fill="#f4eee2" opacity="0.45"/>
+    </g>
+    <circle cx="1110" cy="490" r="390" fill="none" stroke="#f4eee2" stroke-width="3" opacity="0.78"/>
+
+    <!-- cobalt ribbon -->
+    <path d="M-120 1310 C 300 1130, 540 1190, 760 960 C 980 730, 1130 610, 1720 470 L 1720 760 C 1290 840, 1080 990, 915 1165 C 740 1350, 400 1390, -120 1540 Z" fill="url(#ribbon)" opacity="0.94"/>
+    <path d="M-120 1250 C 330 1080, 590 1130, 810 900 C 1030 670, 1200 560, 1720 430" fill="none" stroke="#d9f3e6" stroke-width="4" opacity="0.75"/>
+
+    <!-- petal cluster -->
+    <g transform="translate(300 1240) rotate(-24)" fill="#d9f3e6">
+      <ellipse cx="0" cy="0" rx="250" ry="54" opacity="0.95"/>
+      <ellipse cx="54" cy="92" rx="220" ry="42" opacity="0.78"/>
+      <ellipse cx="-36" cy="166" rx="180" ry="30" opacity="0.56"/>
+      <ellipse cx="30" cy="-84" rx="170" ry="26" opacity="0.44"/>
+    </g>
+    <g transform="translate(250 1100) rotate(-24)" fill="#ff5a1f">
+      <ellipse cx="0" cy="0" rx="160" ry="30"/>
+      <ellipse cx="30" cy="58" rx="120" ry="20" opacity="0.7"/>
+    </g>
+
+    <!-- registration bars -->
+    <g fill="#f4eee2">
+      <rect x="88" y="92" width="118" height="14"/>
+      <rect x="88" y="118" width="72" height="8" opacity="0.7"/>
+      <rect x="88" y="142" width="96" height="8" opacity="0.4"/>
+      <rect x="1394" y="1438" width="118" height="14"/>
+      <rect x="1440" y="1464" width="72" height="8" opacity="0.7"/>
+      <rect x="1416" y="1488" width="96" height="8" opacity="0.4"/>
+    </g>
+
+    <!-- barcode -->
+    <g fill="#f4eee2" opacity="0.9" transform="translate(88 1372)">
+      <rect x="0" y="0" width="7" height="116"/>
+      <rect x="12" y="0" width="3" height="116"/>
+      <rect x="21" y="0" width="12" height="116"/>
+      <rect x="39" y="0" width="5" height="116"/>
+      <rect x="50" y="0" width="3" height="116"/>
+      <rect x="59" y="0" width="16" height="116"/>
+      <rect x="81" y="0" width="4" height="116"/>
+      <rect x="91" y="0" width="9" height="116"/>
+      <rect x="106" y="0" width="3" height="116"/>
+      <rect x="115" y="0" width="6" height="116"/>
+    </g>
+
+    <!-- editorial type -->
+    <g fill="#f4eee2">
+      <text x="88" y="224" font-family="Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="10">ORBIT / 07</text>
+      <text x="88" y="262" font-family="Menlo, monospace" font-size="15" letter-spacing="4" opacity="0.62">SURFACE STUDY · 1600</text>
+      <text x="1512" y="222" text-anchor="end" font-family="Menlo, monospace" font-size="15" letter-spacing="4" opacity="0.62">WF–M3–001</text>
+    </g>
+
+    <!-- thin technical ticks -->
+    <g stroke="#d9f3e6" stroke-width="1" opacity="0.32">
+      <path d="M88 320H420"/>
+      <path d="M88 320V304M188 320V308M288 320V304M388 320V308"/>
+      <path d="M1180 1380H1512"/>
+      <path d="M1180 1380V1364M1280 1380V1368M1380 1380V1364M1480 1380V1368"/>
+    </g>
+  </g>
+</svg>

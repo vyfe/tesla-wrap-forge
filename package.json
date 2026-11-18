@@ -1,0 +1,38 @@
+{
+  "name": "tesla-wrap-forge",
+  "version": "1.2.0",
+  "description": "把任意图案确定性地加工成特斯拉官方车机涂装模板 PNG 的工程化工具",
+  "type": "module",
+  "bin": {
+    "wrapforge": "bin/wrapforge.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "dev": "node --watch src/server.mjs",
+    "dev:web": "vite",
+    "build": "npm run build:web",
+    "build:web": "vite build",
+    "preview": "vite preview",
+    "pretest": "npm run fetch:assets && npm run build:web",
+    "test": "node --test",
+    "sample": "node scripts/make-samples.mjs",
+    "fetch:assets": "node scripts/fetch-assets.mjs"
+  },
+  "keywords": [
+    "tesla",
+    "wrap",
+    "custom-wraps",
+    "sharp",
+    "image-pipeline"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "sharp": "^0.34.4"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}

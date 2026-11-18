@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16201b">
+  <meta name="description" content="把图案确定性地加工成特斯拉官方车机涂装模板 PNG：选车型、放图案、校验、导出。">
+  <title>车衣文件工坊 / Tesla Wrap Forge</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="车衣文件工坊首页">
+      <span class="brand-mark" aria-hidden="true"><span>WF</span></span>
+      <span class="brand-copy">
+        <span class="eyebrow">TESLA CUSTOM WRAPS / FILE WORKSHOP</span>
+        <span class="brand-title">车衣文件工坊</span>
+      </span>
+    </a>
+
+    <div class="job-ticket" aria-label="作业信息">
+      <div class="job-cell">
+        <span>JOB</span>
+        <strong id="jobNo">WF-000000-00</strong>
+      </div>
+      <div class="job-cell">
+        <span>STANDARD</span>
+        <strong>1024 PX / ≤1 MB</strong>
+      </div>
+      <div class="barcode" aria-hidden="true"></div>
+    </div>
+
+    <div class="top-status" id="topStatus" aria-live="polite">
+      <i aria-hidden="true"></i>
+      <span>准备就绪</span>
+    </div>
+  </header>
+
+  <div class="scope-strip">
+    <span class="scope-tag">范围</span>
+    <p>官方模板只服务车机 3D 涂装，不是实体膜打印施工文件。</p>
+    <button class="text-button" id="scopeButton" type="button">查看边界说明 ↗</button>
+  </div>
+
+  <main class="workspace">
+    <aside class="rail rail-left" aria-label="图案设置">
+      <section class="step reveal">
+        <div class="step-head">
+          <span class="step-num">01</span>
+          <h2>选择车型</h2>
+          <span class="step-hint">TEMPLATE</span>
+        </div>
+        <label class="field">
+          <span class="field-label">车型 / 年份</span>
+          <select id="templateSelect" class="select"></select>
+        </label>
+        <div class="model-summary" id="modelSummary">
+          <div class="model-thumb"><img id="vehicleImage" alt="" width="72" height="80"></div>
+          <div class="model-copy">
+            <strong id="modelName">—</strong>
+            <span id="modelVariant">—</span>
+          </div>
+          <a id="sourceLink" class="source-link" href="#" target="_blank" rel="noreferrer" title="打开特斯拉官方模板">官方 ↗</a>
+        </div>
+      </section>
+
+      <section class="step reveal">
+        <div class="step-head">
+          <span class="step-num">02</span>
+          <h2>放图案</h2>
+          <span class="step-hint">ARTWORK</span>
+        </div>
+
+        <div class="mode-row">
+          <div class="mode-switch" id="modeSwitch" role="group" aria-label="供图模式">
+            <button type="button" data-mode="single" class="active">单图</button>
+            <button type="button" data-mode="layers">分面</button>
+          </div>
+          <span class="mode-badge" id="modeBadge">WHOLE</span>
+        </div>
+        <p class="mode-note" id="modeNote">一张整图套整个 UV 图集；适合抽象、迷彩、满版纹理。</p>
+
+        <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+
+        <div id="singleTools">
+          <label class="dropzone" id="dropzone" tabindex="0">
+            <span class="drop-plus" aria-hidden="true">＋</span>
+            <strong>拖入图案，或点击选择</strong>
+            <small>PNG / JPG / WebP / SVG · 建议长边 ≥ 1600 px</small>
+          </label>
+
+          <div class="file-row" id="fileRow" hidden>
+            <div class="file-thumb"><img id="fileThumb" alt=""></div>
+            <div class="file-copy">
+              <strong id="fileName">—</strong>
+              <span id="fileMeta">—</span>
+            </div>
+            <button id="removeFile" class="icon-button" type="button" aria-label="移除图案">×</button>
+          </div>
+        </div>
+
+        <div id="layerTools" hidden>
+          <div class="layer-grid" id="layerGrid"></div>
+          <div class="layer-actions">
+            <button id="mirrorSides" class="text-button" type="button">右侧镜像左侧</button>
+            <button id="splitSample" class="text-button" type="button">载入分面示例</button>
+            <button id="clearLayers" class="text-button" type="button">清空</button>
+          </div>
+          <p class="layer-note">平面图集看起来被切开是正常的；每个面会按车身板块映射，在车机 3D 上连续显示。</p>
+        </div>
+
+        <div class="layer-context" id="layerContext" hidden>
+          <span>当前编辑</span>
+          <strong id="activeLayerLabel">左侧</strong>
+          <span>变换只作用于这个面</span>
+        </div>
+
+        <div class="control">
+          <div class="control-head">
+            <label for="zoom">缩放</label>
+            <output id="zoomOut" for="zoom">100%</output>
+          </div>
+          <input id="zoom" class="range" type="range" min="50" max="200" step="1" value="100">
+        </div>
+
+        <div class="control">
+          <div class="control-head">
+            <span>适配</span>
+            <span class="micro">FIT</span>
+          </div>
+          <div class="segmented" id="fitControl" role="group" aria-label="图案适配方式">
+            <button type="button" data-fit="cover" class="active">满版</button>
+            <button type="button" data-fit="contain">留白</button>
+            <button type="button" data-fit="tile">平铺</button>
+            <button type="button" data-fit="stretch">拉伸</button>
+          </div>
+        </div>
+
+        <div class="control two-up">
+          <div>
+            <div class="control-head">
+              <label for="offsetX">水平</label>
+              <output id="xOut" for="offsetX">0</output>
+            </div>
+            <input id="offsetX" class="range" type="range" min="-50" max="50" step="1" value="0">
+          </div>
+          <div>
+            <div class="control-head">
+              <label for="offsetY">垂直</label>
+              <output id="yOut" for="offsetY">0</output>
+            </div>
+            <input id="offsetY" class="range" type="range" min="-50" max="50" step="1" value="0">
+          </div>
+        </div>
+
+        <details class="advanced">
+          <summary>更多控制 <span>ROTATE / FLIP / BACKGROUND</span></summary>
+          <div class="advanced-body">
+            <div class="control">
+              <div class="control-head">
+                <label for="rotate">旋转</label>
+                <output id="rotateOut" for="rotate">0°</output>
+              </div>
+              <input id="rotate" class="range" type="range" min="-30" max="30" step="1" value="0">
+            </div>
+
+            <div class="control">
+              <div class="control-head"><span>翻转</span><span class="micro">FLIP</span></div>
+              <div class="button-pair">
+                <button id="flipX" class="toggle" type="button" aria-pressed="false">水平</button>
+                <button id="flipY" class="toggle" type="button" aria-pressed="false">垂直</button>
+              </div>
+            </div>
+
+            <div class="control">
+              <div class="control-head">
+                <label for="background">空余区域</label>
+                <span class="micro">BACKGROUND</span>
+              </div>
+              <select id="background" class="select compact">
+                <option value="auto">智能补边</option>
+                <option value="transparent">透明</option>
+                <option value="#0b1b2b">深海蓝</option>
+                <option value="#f4eee2">纸白</option>
+                <option value="custom">自定颜色…</option>
+              </select>
+              <input id="customColor" class="color-input" type="color" value="#1f3bff" aria-label="自定义背景色" hidden>
+            </div>
+
+            <div class="control">
+              <div class="control-head">
+                <label for="quality">压缩质量</label>
+                <output id="qualityOut" for="quality">92</output>
+              </div>
+              <input id="quality" class="range" type="range" min="50" max="100" step="1" value="92">
+            </div>
+
+            <label class="checkline">
+              <input id="autoDownscale" type="checkbox" checked>
+              <span>超过 1 MB 时自动降到 768 / 512</span>
+            </label>
+
+            <button id="resetComposition" class="text-button reset" type="button">重置构图</button>
+          </div>
+        </details>
+      </section>
+    </aside>
+
+    <section class="stage-column" aria-label="涂装画布">
+      <div class="stage-top">
+        <div>
+          <span class="eyebrow">JOB PROOF / 作业台</span>
+          <strong id="stageTitle">MODEL 3 焕新版</strong>
+        </div>
+        <div class="stage-state" id="stageState" aria-live="polite">
+          <i aria-hidden="true"></i><span>READY</span>
+        </div>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="ruler ruler-x" aria-hidden="true"></div>
+        <div class="ruler ruler-y" aria-hidden="true"></div>
+
+        <div class="artboard-wrap">
+          <div class="artboard is-checker" id="artboard">
+            <span class="crop crop-tl" aria-hidden="true"></span>
+            <span class="crop crop-tr" aria-hidden="true"></span>
+            <span class="crop crop-bl" aria-hidden="true"></span>
+            <span class="crop crop-br" aria-hidden="true"></span>
+            <img id="preview" alt="当前图案在车衣模板上的预览">
+            <img id="guideOverlay" class="guide-overlay is-hidden" alt="" aria-hidden="true">
+            <div class="view-outline" id="viewOutline" hidden><span id="viewOutlineLabel">左侧</span></div>
+            <div class="empty-state" id="emptyState">
+              <span class="empty-mark" aria-hidden="true">⌁</span>
+              <strong>等待图案</strong>
+              <span>拖入文件后开始计算</span>
+            </div>
+            <div class="scan" id="scan" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="stage-readout">
+          <span>ATLAS <b id="readoutSize">1024 × 1024</b></span>
+          <span>MODE <b id="readoutMode">COVER</b></span>
+          <span>ZOOM <b id="readoutZoom">100%</b></span>
+        </div>
+      </div>
+
+      <div class="stage-toolbar">
+        <div class="tool-group">
+          <button id="guideToggle" class="tool" type="button" aria-pressed="false">
+            <span class="tool-mark" aria-hidden="true"></span>模板线稿
+          </button>
+          <button id="checkerToggle" class="tool active" type="button" aria-pressed="true">
+            <span class="checker-mark" aria-hidden="true"></span>透明格
+          </button>
+          <button id="zoneToggle" class="tool active" type="button" aria-pressed="true" hidden>
+            <span class="zone-mark" aria-hidden="true"></span>分区
+          </button>
+        </div>
+        <div class="tool-meta">
+          <span id="renderTime">首次渲染会加载模板</span>
+          <button id="sampleButton" class="text-button" type="button">换回示例</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="rail rail-right" aria-label="校验与导出">
+      <section class="step reveal qc-step">
+        <div class="step-head">
+          <span class="step-num">03</span>
+          <h2>校验</h2>
+          <span class="step-hint">INSPECTION</span>
+        </div>
+
+        <div class="stamp" id="stamp" data-status="idle">
+          <span class="stamp-kicker">QC / 1024</span>
+          <strong id="stampText">待校验</strong>
+          <span id="stampSub">等待渲染结果</span>
+        </div>
+
+        <dl class="specs">
+          <div><dt>画布</dt><dd id="specSize">—</dd></div>
+          <div><dt>文件</dt><dd id="specBytes">—</dd></div>
+          <div><dt>模板覆盖</dt><dd id="specCoverage">—</dd></div>
+        </dl>
+
+        <figure class="panel-figure">
+          <div class="panel-map-wrap"><img id="panelMap" alt="车衣模板板块编号与覆盖图"></div>
+          <figcaption><span>板块图 / PANEL MAP</span><span id="panelCount">—</span></figcaption>
+        </figure>
+
+        <ul class="checks" id="checks" aria-live="polite">
+          <li class="check idle"><i></i><span>等待检查</span><b>—</b></li>
+        </ul>
+
+        <div class="warnings" id="warnings" hidden></div>
+      </section>
+
+      <section class="step reveal export-step">
+        <div class="step-head">
+          <span class="step-num">04</span>
+          <h2>导出</h2>
+          <span class="step-hint">DELIVER</span>
+        </div>
+
+        <label class="field filename-field">
+          <span class="field-label">文件名</span>
+          <span class="filename-control">
+            <input id="filename" class="filename" type="text" maxlength="26" spellcheck="false" autocomplete="off" placeholder="m3-2024_wrap">
+            <span>.png</span>
+          </span>
+        </label>
+        <p class="filename-help" id="filenameHelp">仅字母、数字、下划线、连字符；总计 ≤ 30 字符。</p>
+
+        <button id="download" class="primary-button" type="button" disabled>
+          <span>下载标准 PNG</span>
+          <span class="button-arrow" aria-hidden="true">↓</span>
+        </button>
+        <button id="downloadReport" class="secondary-button" type="button" disabled>下载校验报告 .json</button>
+
+        <p class="fine-print">
+          放入 U 盘根目录 <code>/Wraps</code>，或在 Tesla App 的 Creations → Wrap 上传。
+          模板外区域必须保持透明；不要把黑色参考线一起导出。
+        </p>
+        <p class="fine-print caution">实体打印膜需要打版、出血、拼版和卷材套准，不能直接使用这份车机纹理。</p>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <span class="eyebrow">SOURCE / 模板来源</span>
+      <p><a href="https://github.com/teslamotors/custom-wraps" target="_blank" rel="noreferrer">teslamotors/custom-wraps</a> · 官方 PNG 纹理</p>
+    </div>
+    <div>
+      <span class="eyebrow">PIPELINE / 处理方式</span>
+      <p>确定性图像变换 + alpha 蒙版 + 调色板压缩 + 板块覆盖校验。没有生成式重绘。</p>
+    </div>
+    <div>
+      <span class="eyebrow">VERSION</span>
+      <p class="mono">WF 1.2.0 / STATIC</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="scopeDialog" class="scope-dialog">
+    <form method="dialog">
+      <span class="eyebrow">SCOPE / 范围</span>
+      <h2>这是车机纹理，不是打印文件</h2>
+      <p>特斯拉官方模板是 1024 px 的 UV 纹理图集，用于车机“玩具箱 → Paint Shop → Wraps”的 3D 展示。它没有物理尺寸、拼版、出血、接缝和卷材方向。</p>
+      <p>本工具只把图案确定性地套进这份官方纹理，并检查尺寸、透明通道、1 MB 限制和板块覆盖。它不会用 AI 重绘模板，也不会伪造影棚效果图。</p>
+      <p>如果你要做实体改色膜 / 彩绘膜，需要另找对应车型的矢量打版文件，按打印机和卷材做拼版，并在施工前用实车或打版数据复核。</p>
+      <div class="dialog-actions">
+        <a class="secondary-button" href="https://github.com/teslamotors/custom-wraps" target="_blank" rel="noreferrer">打开官方模板仓库 ↗</a>
+        <button class="primary-button" value="close">知道了</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
