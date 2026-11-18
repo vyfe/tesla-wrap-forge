@@ -370,6 +370,6 @@ npm test
 ## 来源与许可
 
 - 代码：[MIT](LICENSE)。
-- 模板与车型图：来自 [teslamotors/custom-wraps](https://github.com/teslamotors/custom-wraps)，版权归 Tesla；仓库未声明开源许可证。这里只作为互操作用途随项目存放，**不要将模板素材单独再分发或用于商业印刷**。详见 [NOTICE.md](NOTICE.md)。
+- 模板与车型图：来自 [teslamotors/custom-wraps](https://github.com/teslamotors/custom-wraps)，版权归 Tesla；仓库未声明开源许可证。公开 GitHub 仓库不包含这些文件，运行时由 `npm run fetch:assets` 拉取；部署镜像中仅作自用演示，**不要将模板素材单独再分发或用于商业印刷**。详见 [NOTICE.md](NOTICE.md)。
 - 示例图案 `samples/orbit-07.svg`、`samples/signal-flora.svg` 为本项目原创，随代码 MIT。
 - Tesla、Model 3、Model Y、Model S、Model X、Cybertruck 是 Tesla, Inc. 的商标。本项目与 Tesla 无隶属关系。
