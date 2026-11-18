@@ -156,6 +156,48 @@ docker build --build-arg VITE_BASE=/ -t tesla-wrap-forge .
 公开 GitHub 仓库只包含代码、原创 samples 和官方素材下载脚本，不包含 Tesla 模板/车型图。运行 `npm run fetch:assets` 从 Tesla 官方仓库拉取；Docker 构建也会自动执行。服务端部署镜像中的模板仅用于自用演示，不再分发给第三方。仓库中没有第三方角色立绘、番剧截图或同人图。
 
 
+如果 npm 报缓存权限错误（`EPERM ... ~/.cache/npm`），可以指定项目内缓存：
+
+```bash
+NPM_CONFIG_CACHE="$PWD/.npm-cache" npm install
+```
+
+### 命令行渲染一张
+
+```bash
+node bin/wrapforge.mjs render \
+  --template model3-2024-base \
+  --image samples/orbit-07.svg \
+  --out samples/out/my-wrap.png \
+  --fit cover \
+  --zoom 1 \
+  --background auto
+```
+
+输出：
+
+```text
+samples/out/my-wrap.png
+samples/out/my-wrap.json   # 校验报告
+```
+
+### 生成仓库内示例
+
+```bash
+npm run sample
+```
+
+会生成：
+
+- `samples/out/m3-2024_orbit-07.png`
+- `samples/out/ct_signal-flora.png`
+- `samples/out/my-2025_signal-flora.png`
+- `samples/out/m3-2024_split-sample.png`
+- `samples/out/proof-sheet.png`
+- `samples/split/left.png` / `right.png` / `hood.png` / `trunk.png` / `frontBumper.png` / `rearBumper.png`
+- 对应的 `.json` 报告与 `summary.json`
+
+
 ## Web 工作台怎么用
 
 1. **选择车型**：选具体年款/版本。不同版本的模板轮廓不同，不能只看“Model 3”三个字。
